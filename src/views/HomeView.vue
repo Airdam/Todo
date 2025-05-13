@@ -16,6 +16,7 @@
       :todos="filter ? filteredTodos : todos"
       @delete-todo="deleteTodo"
       @edit-todo="editTodo"
+      @save-edit="updateTodo"
     ></TodoList>
   </div>
 </template>
