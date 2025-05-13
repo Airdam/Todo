@@ -40,8 +40,8 @@ export default {
       if (this.errors.length > 0) {
         return
       }
+
       this.$emit('add-todo', this.todo)
-      this.nextId = ''
       this.todo.text = ''
       this.todo.date = ''
     },
