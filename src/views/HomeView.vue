@@ -2,21 +2,13 @@
   <div>
     <br />
     <TodoForm v-if="!todoToEdit" @add-todo="addTodo"></TodoForm>
-    <TodoEdit
-      v-else
-      :todo="todoToEdit"
-      @save-edit="updateTodo"
-      @cancel-edit="todoToEdit = null"
-    ></TodoEdit>
+    <TodoEdit v-else :todo="todoToEdit" @save-edit="updateTodo" @cancel-edit="todoToEdit = null"></TodoEdit>
     <label>
       <input type="checkbox" v-model="filter.showDone" />
       Erledigt
     </label>
-    <TodoList
-      :todos="filter ? filteredTodos : todos"
-      @delete-todo="deleteTodo"
-      @edit-todo="editTodo"
-    ></TodoList>
+    <TodoList :todos="filter ? filteredTodos : todos" @delete-todo="deleteTodo" @edit-todo="editTodo"
+      @save-edit="updateTodo"></TodoList>
   </div>
 </template>
 
@@ -33,13 +25,11 @@ export default {
     TodoList,
     TodoEdit,
   },
-
   data() {
     return {
       todoToEdit: null,
       todos: [],
       filter: { showDone: false, date: null },
-      nextId: 1,
     }
   },
   computed: {
@@ -54,16 +44,16 @@ export default {
   methods: {
     addTodo(todo) {
       this.todos.push({
-        id: this.nextId,
+        id: Math.floor(Math.random() * 10000) + 1,
         text: todo.text,
         date: todo.date,
         done: false,
       })
-      this.nextId++
-      // funzt im locoalstorage nicht
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     deleteTodo(index) {
       this.todos.splice(index, 1)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     editTodo(todo) {
       this.todoToEdit = {
@@ -76,9 +66,16 @@ export default {
     updateTodo(updatedTodo) {
       const index = this.todos.findIndex((todo) => todo.id === updatedTodo.id)
       this.todos.splice(index, 1, updatedTodo)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
       this.todoToEdit = null
-    },
+    }
   },
+  mounted() {
+    const todos = localStorage.getItem('todos')
+    if (todos) {
+      this.todos = JSON.parse(todos)
+    }
+  }
 }
 </script>
 
