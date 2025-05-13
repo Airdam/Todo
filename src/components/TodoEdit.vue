@@ -24,6 +24,7 @@ export default {
         text: this.todo.text,
         date: this.todo.date,
         id: this.todo.id,
+        done: this.todo.done,
       },
     }
   },
