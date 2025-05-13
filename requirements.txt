@@ -1,19 +1,3 @@
+New Requirements
 
-
-  checkbox
-  delete button (delete funktion)
-  stichounkt filter --> gib mir alles zurück was nicht (...) enthält
-  .filter index=id 
-
-  bei jeden todo muss ein button sein zum löschen
-  eventuell neues bearbeiten
-
-
-
-update 
-
-entweder nimmt todoform props an --> todo senden was bearbeitet wirden (schwerer)
-
-
-neue edit componente -->
-wie forms mit update funktion
+Add localstorage
