@@ -68,12 +68,6 @@ export default {
       this.todos.splice(index, 1, updatedTodo)
       localStorage.setItem('todos', JSON.stringify(this.todos))
       this.todoToEdit = null
-    },
-    testFunction() {
-      const name = 'Erdem'
-      const names = ['Erdem', 'Tamer'] // names[0], names[1]
-      const person = { name: 'Erdem', hobby: 'Naruto' } // person.name
-      const persons = [{ name: 'Erdem', hobby: 'Naruto' }, { name: 'Tamer', hobby: 'One Piece' }]
     }
   },
   mounted() {
