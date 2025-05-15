@@ -5,12 +5,10 @@ export default {
 </script>
 
 <template>
-  <header>
-    <nav>
-      <h1>Todo APP</h1>
-      <router-view />
-    </nav>
-  </header>
+  <div class="w-full h-full">
+    <h1>Todo APP</h1>
+    <router-view />
+  </div>
 </template>
 
 <style></style>
