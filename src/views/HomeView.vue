@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen w-full bg-gray-600 text-white flex justify-center items-top">
-    <div class="w-full px-4">
-      <h1 class="text-3xl flex justify-left mt-6 mb-6">Todo App</h1>
+    <div class="w-full md:w-1/2 flex flex-col px-4">
+      <h1 class="text-center text-3xl mt-6 mb-6">Todo App</h1>
 
       <TodoForm v-if="!todoToEdit" @add-todo="addTodo" />
       <TodoEdit

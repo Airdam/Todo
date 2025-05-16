@@ -1,23 +1,26 @@
 <template>
   <div>
-    <form @submit.prevent="submitEdit">
-      <input v-model="edited.text" type="text" class="rounded border-2 padding m-2" />
-      <input v-model="edited.date" type="date" class="rounded border-2 padding m-2" />
-      <button type="submit" class="text-green-400 rounded border-2 padding m-2">Speichern</button>
-      <button
-        type="button"
-        @click="$emit('cancel-edit')"
-        class="text-red-400 rounded border-2 padding m-2"
-      >
+    <form @submit.prevent="submitEdit" class="w-full flex flex-col gap-2">
+      <input v-model="edited.text" type="text" class="w-full flex rounded border-2 p-2" />
+      <input v-model="edited.date" type="date" class="w-full flex rounded border-2 p-2" />
+      <UiButton button-type="submit" design="success">
+          Speichern
+      </UiButton>
+      <UiButton @click.native="$emit('cancel-edit')" button-type="button" design="danger">
         Abbrechen
-      </button>
+      </UiButton>
     </form>
   </div>
 </template>
 
 <script>
+import UiButton from './ui/UiButton.vue';
+
 export default {
   name: 'TodoEdit',
+  components: {
+    UiButton
+  },
   props: {
     todo: {
       type: Object,
