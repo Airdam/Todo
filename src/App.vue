@@ -6,7 +6,6 @@ export default {
 
 <template>
   <div class="w-full h-full">
-    <h1>Todo APP</h1>
     <router-view />
   </div>
 </template>
